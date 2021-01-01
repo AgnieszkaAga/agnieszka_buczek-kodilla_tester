@@ -1,5 +1,6 @@
 public class FirstClass {
     public static void main(String[] args) {         // [2]
-        System.out.println("Hello from FirstClass!"); // [3]
+        String invitation = "Hello from my FirstClass!";
+        System.out.println(invitation); // [3]
     }
 }
