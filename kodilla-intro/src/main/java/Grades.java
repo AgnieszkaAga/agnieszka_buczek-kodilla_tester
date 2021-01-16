@@ -1,9 +1,9 @@
 public class Grades {
     private int grades[];
-    private int size;
-    private int sum;
-    private int lastGrade;
-    private int averageGrade;
+     private int size;
+     private int sum;
+     private int lastGrade;
+     private int averageGrade;
 
     public Grades() {
         this.grades = new int[10];
@@ -12,6 +12,8 @@ public class Grades {
         this.averageGrade = 0;
         this.lastGrade = 0;
     }
+
+
     public void add(int value) {
         if (this.size == 10) {
             return;
@@ -20,16 +22,16 @@ public class Grades {
         this.size++;
     }
 
-    public int showLastGrade() {
-        lastGrade = grades[size-1];
-        return lastGrade;
+    public int showLastGrade(int[] grades) {
+        this.lastGrade = this.grades[this.size-1];
+        return this.lastGrade;
     }
 
     public int showAverageGrade() {
         for (int i =0; i < size; i++) {
           sum = sum + grades[i];
-          averageGrade = sum / size;
+          this.averageGrade = sum / size;
         }
-         return averageGrade;
+         return this.averageGrade;
     }
 }
