@@ -1,3 +1,5 @@
+package org.agnieszka.user;
+
 public class UserApplication {
     public static void main(String[] args) {
 
@@ -10,17 +12,18 @@ public class UserApplication {
         User peter = new User("Peter", 41);
         User livia = new User("Livia", 2);
 
-        User[] board = {aga, tomek, iga, roman, marta,peter,livia};
+        User[] board = {aga, tomek, iga, roman, marta, peter, livia};
 
         UserApplication averageAge = new UserApplication();
 
         int resultAge = averageAge.getAverageAge(board);
-        System.out.println("Below average age: "+resultAge+" are:");
+        System.out.println("Below average age: " + resultAge + " are:");
 
         String resultName = averageAge.getName(board);
         System.out.println(resultName);
 
     }
+
     int average = 0;
 
     public int getAverageAge(User[] board) {
@@ -33,14 +36,15 @@ public class UserApplication {
         }
         return average;
     }
-        public String getName (User[]board){
-            String userName = "";
-            for (int i = 0; i < board.length; i++) {
-                if (average > board[i].age) {
-                    System.out.println(board[i].name);
-                }
+
+    public String getName(User[] board) {
+        String userName = "";
+        for (int i = 0; i < board.length; i++) {
+            if (average > board[i].age) {
+                System.out.println(board[i].name);
             }
-            return userName;
         }
+        return userName;
+    }
 }
 
