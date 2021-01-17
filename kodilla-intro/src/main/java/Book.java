@@ -1,10 +1,12 @@
 public class Book {
- //   static String author;
- //   static String title;
+     static String author;
+     static String title;
 
-  //  public static String[] of (String author, String title) {
-   //     Book myBook = new String[]{Book.author, Book.title};
-     //   return myBook;
+    public static Book of(String author, String title) {
+        Book myBook = new Book();
+        myBook.author = author;
+        myBook.title = title;
+        return myBook;
     }
-
+}
 

@@ -22,5 +22,4 @@ public class RandomNumbers {
         }
         return loops;
     }
-
     }
