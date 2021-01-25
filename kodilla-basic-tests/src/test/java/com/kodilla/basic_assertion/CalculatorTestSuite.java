@@ -1,13 +1,20 @@
 package com.kodilla.basic_assertion;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculatorTestSuite {
+    private static Calculator calculator;
+
+    @BeforeEach
+    public void prepare()  {
+        calculator = new Calculator();
+    }
+
     @Test
     public void testSum() {
-        Calculator calculator = new Calculator();
         int a = 5;
         int b = 8;
         int sumResult = calculator.sum(a, b);
@@ -16,7 +23,6 @@ public class CalculatorTestSuite {
 
     @Test
     public void testSubtract() {
-      Calculator calculator = new Calculator();
       int a = 10;
       int b = 3;
       int subtractResult = calculator.subtract(a, b);
@@ -25,7 +31,6 @@ public class CalculatorTestSuite {
 
     @Test
     public void testSquared() {
-        Calculator calculator = new Calculator();
         int a = 2;
         int b = 0;
         int c = -3;
