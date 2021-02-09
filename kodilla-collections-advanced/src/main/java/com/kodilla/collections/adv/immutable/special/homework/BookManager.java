@@ -18,6 +18,7 @@ public class BookManager {
 }
 
 //        Book book = new Book(title, author);
+//        books.add(book);
 //        for (Book tempBook : books) {
 //            if (book.equals(tempBook)) {
 //                System.out.println("This book is already in the base");

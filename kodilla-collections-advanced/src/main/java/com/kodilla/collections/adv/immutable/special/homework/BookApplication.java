@@ -16,7 +16,9 @@ public class BookApplication {
         System.out.println(bookA == bookB);
         System.out.println(bookB == bookC);
         System.out.println(bookA == bookD);
-//        System.out.println(BookManager.books.size());
+        System.out.println(BookManager.books.size());
+        Book bookE = Book.of("jfdkjf", "fjdksj");
+        System.out.println(bookE);
 
       }
 }
