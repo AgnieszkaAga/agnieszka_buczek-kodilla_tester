@@ -30,6 +30,6 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order number: " + number + " - desctription:";
+        return "Order number: " + number;
     }
 }

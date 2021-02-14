@@ -13,8 +13,12 @@ public class Warehouse {
     }
 
     public static void addOrder(Order order) {
-        orders.add(order);
-        System.out.println(order+ " - Order has been added.");
+        if (orders.contains(order))
+             System.out.println(order + " already exists in order base");
+        else {
+            orders.add(order);
+            System.out.println(order + " - Order has been added.");
+        }
     }
 
     public static Order getOrder(String number) throws OrderDoesntExistException {
@@ -25,7 +29,8 @@ public class Warehouse {
         for (Order singleOrder : myOrder) {
             System.out.println(singleOrder);
         }
+        if (myOrder.isEmpty())
+            throw new OrderDoesntExistException();
         return myOrder.get(0);
-        throw new OrderDoesntExistException();
     }
 }
