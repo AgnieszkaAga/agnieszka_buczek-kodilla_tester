@@ -15,11 +15,11 @@ class UserValidatorTestSuite {
         assertTrue(validator.validateUsername(input));
     }
 
-    @ParameterizedTest
-    @NullAndEmptySource
-    public void returnFalseIfNullOrEmpty(String input) {
-        assertFalse(validator.validateUsername(input));
-    }
+//    @ParameterizedTest
+//    @NullAndEmptySource
+//    public void returnFalseIfNullOrEmpty(String input) {
+//        assertFalse(validator.validateUsername(input));
+//    }
 
     @ParameterizedTest
     @ValueSource(strings = {"1", "aA", "00", "@df54", "jkk -.", "!!!", "ą1234"})
