@@ -1,5 +1,6 @@
 package com.kodilla.rest.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kodilla.rest.domain.BookDto;
 import com.kodilla.rest.service.BookService;
 import org.hamcrest.Matchers;
@@ -40,5 +41,24 @@ public class BookControllerMvcTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().is(200))                     // [2]
                 .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(2)));
+    }
+
+    @Test
+    public void shouldAddBook() throws Exception {
+
+        //when &then
+        mockMvc.perform(MockMvcRequestBuilders.post("/books")
+                .content(asJsonString(new BookDto("title1", "author1")))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
