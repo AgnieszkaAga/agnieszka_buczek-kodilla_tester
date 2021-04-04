@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class AllegroTestingApp {
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "C:/selenium-drivers/Chrome/chromedriver.exe");
@@ -19,12 +21,31 @@ public class AllegroTestingApp {
 
         WebElement cookiesButton = driver.findElement(By.xpath("//*[@data-role=\"accept-consent\"]"));
         cookiesButton.click();
-        WebElement searchBox = driver.findElement(By.xpath("//*[@role=\"combobox\"]/input"));
+
+//        WYSZUKIWAIE PRZEZ XPATH:
+//        WebElement searchBox = driver.findElement(By.xpath("//*[@role=\"combobox\"]/input"));
+//        searchBox.sendKeys("Mavic mini");
+//        WebElement category = driver.findElement(By.xpath("//*[@data-role=\"filters-dropdown-toggle\"]"));
+//        Select selectCategory = new Select(category);
+//        selectCategory.selectByIndex(3);
+//        WebElement searchButton = driver.findElement(By.xpath("//*[@data-role=\"search-button\"]"));
+//        searchButton.click();
+
+        WebElement searchBox = driver.findElement(By.cssSelector("input[data-role='search-input']"));
         searchBox.sendKeys("Mavic mini");
-        WebElement category = driver.findElement(By.xpath("//*[@data-role=\"filters-dropdown-toggle\"]"));
+        WebElement category = driver.findElement(By.cssSelector("select[data-role='filters-dropdown-toggle']"));
         Select selectCategory = new Select(category);
         selectCategory.selectByIndex(3);
-        WebElement searchButton = driver.findElement(By.xpath("//*[@data-role=\"search-button\"]"));
+        WebElement searchButton = driver.findElement(By.cssSelector("button[data-role='search-button']"));
         searchButton.click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("section>article")));
+        List<WebElement> listOfArticles = driver.findElements(By.cssSelector("section>article"));
+        System.out.println(listOfArticles.size());
+        for (WebElement article : listOfArticles) {
+            System.out.println(
+                            article.getText() +
+                            "-------------------");
+        }
     }
 }
