@@ -10,7 +10,7 @@ public class IsDividedSteps implements En {
 
     public void isItDividedBy() {
         Given("I check (number)", (number) -> {
-            this.number = number;
+            this.number = (int) number;
             });
 
         When("I ask whether it's divided by 3 and additional by 5", () -> {
