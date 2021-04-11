@@ -9,7 +9,7 @@ public class IsDividedSteps implements En {
     private String answer;
 
     public void isItDividedBy() {
-        Given("I check <number>", (int number) -> {
+        Given("I check (number)", (number) -> {
             this.number = number;
             });
 
