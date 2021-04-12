@@ -20,13 +20,16 @@ public class WalletSteps implements En {
         Then("$30 should be dispensed", () -> {
             Assert.assertEquals(30,cashSlot.getContents());
         });
+        Then("the balance of my wallet should be $170", () -> {
+            Assert.assertEquals("Incorrect wallet balance", 170, wallet.getBalance());
+        });
 
         Given("I have deposited $100 in my wallet", () -> {
             wallet.deposit(100);
             Assert.assertEquals("Incorrect wallet balance",100, wallet.getBalance());
         });
         When("I request $101", () -> {
-            cashier.withdraw(wallet,0);
+            cashier.withdraw(wallet,101);
         });
         Then("$0 should be dispensed", () -> {
             Assert.assertEquals(0, cashSlot.getContents());
@@ -49,10 +52,34 @@ public class WalletSteps implements En {
             Assert.assertEquals("Incorrect wallet balance",500, wallet.getBalance());
         });
         When("I request $-1", () -> {
-            cashier.withdraw(wallet,0);
+            cashier.withdraw(wallet,-1);
         });
         Then("$0 should be dispensed", () -> {
             Assert.assertEquals(0, cashSlot.getContents());
+        });
+
+        Given("there is <amount> in my wallet", (amount) -> {
+            wallet.deposit((int) amount);
+        });
+        When("I withdraw <withdrawalAmount>", (withdrawalAmount) -> {
+            cashier.withdraw(wallet,(int) withdrawalAmount);
+        });
+        Then("nothing should be dispensed", (amount) -> {
+            cashSlot.dispense(0);
+            Assert.assertEquals("Incorrect wallet balance", amount, wallet.getBalance());
+        });
+        Then("I should be told that I don't have enough money in my wallet", (withdrawalAmount) -> {
+            Assert.assertEquals("You don't have enough money in your wallet", cashier.withdraw(wallet,(int) withdrawalAmount));
+        });
+
+        Given("there is <amount> in my wallet", (amount) -> {
+            wallet.deposit((int) amount);
+        });
+        When("I check the balance of my wallet", () -> {
+            wallet.getBalance();
+        });
+        Then("I should see that the balance is <displayedAmount>", (displayedAmount) -> {
+            Assert.assertEquals(displayedAmount, wallet.getBalance());
         });
     }
 }

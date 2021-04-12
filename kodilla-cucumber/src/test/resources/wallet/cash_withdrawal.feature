@@ -3,6 +3,7 @@ Feature: Cash Withdrawal
     Given I have deposited $200 in my wallet
     When I request $30
     Then $30 should be dispensed
+    And the balance of my wallet should be $170
 
     Scenario: Failed withdrawal - not enough money in wallet
       Given I have deposited $100 in my wallet
