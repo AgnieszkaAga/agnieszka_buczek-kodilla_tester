@@ -10,11 +10,7 @@ public class Year {
     public boolean isLeap() {
         if (this.myYear % 4 == 0) {
             if (this.myYear % 100 == 0) {
-                if (this.myYear % 400 == 0) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return (this.myYear % 400 == 0);
             } else {
                 return true;
             }
